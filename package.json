@@ -1,0 +1,22 @@
+{
+  "name": "promise-es3",
+  "version": "1.0.0",
+  "description": "es3实现Promise",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "node test/test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SWPUliusong/promise-es3.git"
+  },
+  "author": "SWPUliusong",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SWPUliusong/promise-es3/issues"
+  },
+  "homepage": "https://github.com/SWPUliusong/promise-es3#readme"
+}

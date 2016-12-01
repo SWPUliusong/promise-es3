@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>自定义Promise</title>
+</head>
+<body>
+	<h1>自定义Promise</h1>
+	
+	<script src="../p.js"></script>
+	<script>
+		function test1() {
+		    return new P(function(resolve, reject) {
+		        setTimeout(function() {
+		      		resolve(100)
+		      	}, 1000)
+		    })
+		}
+
+		P.all([test1(), 236, test1()])
+		.then(function(data) {
+		  console.log(data)
+		  return test1()
+		})
+		.then(function(data) {
+		  console.log(data)
+		  return P.resolve(200)
+		})
+		.then(function(data) {
+		  console.log(data)
+		  return P.reject(500)
+		})
+		.catch(function(err) {
+		  console.log(err)
+		})
+
+		console.log(P.author)
+
+		function p(n) {
+		  return new P((resolve, reject) => {
+		    resolve(n + 123)
+		    if (typeof n === 'number') {
+		      reject(n)
+		    }
+		  })
+		}
+
+		p(123).then(res => console.log(res)).catch(err => console.log(err))
+	</script>
+</body>
+</html>
