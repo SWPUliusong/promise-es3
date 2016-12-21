@@ -2,12 +2,31 @@
   'use strict'
   // 兼容不支持bind方法的环境
   Function.prototype.bind = Function.prototype.bind || function(cxt) {
-    let fn = this
-    let arg1 = [].slice.call(arguments, 1)
+    let fn = this;
+    let arg1 = [].slice.call(arguments, 1);
     return function () {
-      let arg2 = [].slice.call(arguments)
-      return fn.apply(cxt, arg1.concat(arg2))
+      let arg2 = [].slice.call(arguments);
+      return fn.apply(cxt, arg1.concat(arg2));
     }
+  }
+
+  // 自实现数组forEach方法
+  Array.prototype.forEach = function(cb) {
+      var len = this.length;
+      for (var i = 0; i < len; i++) {
+          cb(this[i], i, this)
+      }
+  }
+
+  // 自实现数组some方法
+  Array.prototype.some = function(cb) {
+      var len = this.length;
+      for (var i = 0; i < len; i++) {
+          if (cb(this[i], i, this)) {
+              return true;
+          }
+      }
+      return false;
   }
 
   function P(fn) {
@@ -75,9 +94,9 @@
           res[i] = p;
         }
       })
-    })   
+    })
   }
-  
+
   // 成功态
   P.prototype.resolve = function(data) {
     if (this.status === 'pending') {
