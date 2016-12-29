@@ -162,10 +162,10 @@
     return;
   }
 
-  if (typeof global === 'object') {
+  if (typeof module === 'object' && typeof module.exports === 'object') {
     module.exports = P;
   }
-  else {
+  else if(typeof window === 'object') {
     root.P = P;
   }
 })(this);
