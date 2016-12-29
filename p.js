@@ -165,7 +165,7 @@
   if (typeof module === 'object' && typeof module.exports === 'object') {
     module.exports = P;
   }
-  else if(typeof window === 'object') {
+  else {
     root.P = P;
   }
 })(this);
